@@ -1,5 +1,6 @@
 int sum=0;
 int state = 0;
+int pinNo[3] = {8,6,4};
 
 void setup() {
   pinMode(10,INPUT);
@@ -11,7 +12,9 @@ void setup() {
 
 void loop() {
   int pinValue =  digitalRead(10);
-  Serial.println(pinValue);
+  //Serial.println(pinValue);
+  Serial.println("state");
+  Serial.println(state);
   delay(200);
 /*  if(pinValue = 0)
   {
@@ -25,24 +28,9 @@ void loop() {
 */
   if(pinValue ==0)
   {
-    if(state ==0)
-    {
-      digitalWrite(4,LOW);
-      digitalWrite(8,HIGH);
-      state = 1;
-    }else if(state ==1)
-    {
-      digitalWrite(8,LOW);
-      digitalWrite(6,HIGH);
-      state = 2;
-    }else if(state == 2)
-    {
-      digitalWrite(6,LOW);
-      digitalWrite(4,HIGH);
-      state = 0;  
-    }
+    digitalWrite(pinNo[state],LOW);
+    state = random(0,3);
+    digitalWrite(pinNo[state],HIGH);
   }
 
 }
-
- 
