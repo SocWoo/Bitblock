@@ -1,36 +1,21 @@
-int sum=0;
-int state = 0;
-int pinNo[3] = {8,6,4};
-
+int state = 0; // 적6,초4,황8,스위치10
+int pinNo[3] = {4 ,6,8};
 void setup() {
-  pinMode(10,INPUT);
-  pinMode(8,OUTPUT);
-  pinMode(6,OUTPUT);
-  pinMode(4,OUTPUT);
+  pinMode(10,INPUT);  
+  pinMode(pinNo[0],OUTPUT);
+  pinMode(pinNo[2],OUTPUT);
+  pinMode(pinNo[1],OUTPUT);
   Serial.begin(9600);
-}
-
+}  
+  
 void loop() {
-  int pinValue =  digitalRead(10);
-  //Serial.println(pinValue);
-  Serial.println("state");
-  Serial.println(state);
+  int pinValue = digitalRead(10);
   delay(200);
-/*  if(pinValue = 0)
+  Serial.println(pinValue);
+  if(pinValue == 0)
   {
-    sum++;
-  }
-  if(sum%2 == 1)
-    digitalWrite(8,HIGH);
-  else if(sum%2 == 0)
-    digitalWrite(8,LOW);
-
-*/
-  if(pinValue ==0)
-  {
-    digitalWrite(pinNo[state],LOW);
-    state = random(0,3);
-    digitalWrite(pinNo[state],HIGH);
-  }
-
-}
+      digitalWrite(pinNo[state],LOW);
+      state = (state+1)%3;
+      digitalWrite(pinNo[state],HIGH);
+  }   
+}  
