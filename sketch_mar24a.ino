@@ -1,6 +1,6 @@
 int piazzoPin = 4;
 int switchPin = 5;
-int sound[] = {261,294,330,349,392,440,494,542,590,630};
+int sound[] = {512,587,659,699,740,784,880,988,1047,1175};
 int index = 0;
 int count = 10;
 int state = 0;
